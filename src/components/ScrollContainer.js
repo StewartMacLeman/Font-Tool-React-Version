@@ -1,8 +1,16 @@
 import React from 'react';
+import ScrollContDiv from './ScrollContDiv';
 
-const ScrollContainer = () => {
+const ScrollContainer = (props) => {
     return (
-        <div className="colScrollCont"></div>
+        <div className="colScrollCont">
+            <p>The {props.text} colour selected is: white</p>
+            <div className="horizontalColDiv">
+                {props.colourNames.map((colourName) => {
+                    return <ScrollContDiv key={colourName} colour={colourName} text={props.text} getColourInfo={props.getColourInfo}/>
+                }).reverse()}
+            </div>
+        </div>
     )
 }
 
