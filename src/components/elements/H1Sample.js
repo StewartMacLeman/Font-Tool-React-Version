@@ -2,7 +2,7 @@ import React from 'react';
 
 const H1Sample = (props) => {
     return (
-        <h1 style={{color: `${props.textCol}`}}>Font Group: Font Family</h1>
+        <h1 ref={props.elementUsed} style={{color: `${props.textCol}`, fontSize: `${props.fontSize}px`}}>{props.sampleText}</h1>
     )
 }
 

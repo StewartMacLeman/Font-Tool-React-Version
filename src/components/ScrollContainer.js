@@ -5,7 +5,7 @@ const ScrollContainer = (props) => {
   return (
     <div className="colScrollCont">
       <p>The {props.text} colour selected is: {props.colour}</p>
-      <div className="horizontalColDiv">
+      <div ref={props.scrollDiv} className="horizontalColDiv">
         {props.colourNames
           .map((colourName) => {
             return (

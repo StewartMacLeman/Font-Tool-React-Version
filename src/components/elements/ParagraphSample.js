@@ -2,7 +2,7 @@ import React from 'react';
 
 const ParagraphSample = (props) => {
     return (
-        <p style={{color: `${props.textCol}`}}>Font Group: Font Family</p>
+        <p ref={props.elementUsed} style={{color: `${props.textCol}`, fontSize: `${props.fontSize}px`}}>{props.sampleText}</p>
     )
 }
 

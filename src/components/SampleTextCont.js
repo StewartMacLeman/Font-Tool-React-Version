@@ -5,10 +5,10 @@ import H2Sample from './elements/H2Sample';
 
 const SampleTextCont = (props) => {
     return (
-        <div className="textContainer" style={{backgroundColor: `${props.backgroundCol}`}}>
-            {(props.elementDisplayed === "h1") && <H1Sample textCol={props.textCol} />}
-            {(props.elementDisplayed === "h2") && <H2Sample textCol={props.textCol} />}
-            {(props.elementDisplayed === "p") && <ParagraphSample textCol={props.textCol} />}
+        <div className="textContainer" style={{backgroundColor: `${props.backgroundCol}`} }>
+            {(props.elementDisplayed === "h1") && <H1Sample sampleText={props.sampleText} textCol={props.textCol} elementUsed={props.elementUsed} fontSize={props.fontSize}/>}
+            {(props.elementDisplayed === "h2") && <H2Sample sampleText={props.sampleText} textCol={props.textCol} elementUsed={props.elementUsed} fontSize={props.fontSize}/>}
+            {(props.elementDisplayed === "p") && <ParagraphSample sampleText={props.sampleText} textCol={props.textCol} elementUsed={props.elementUsed} fontSize={props.fontSize}/>}
         </div>
     )
 }
