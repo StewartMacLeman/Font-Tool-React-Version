@@ -22,18 +22,13 @@ const Main = (props) => {
     let element = elementUsed.current;
     let computed = getComputedStyle(element);
     let size = computed.getPropertyValue("font-size");
-    // console.log(element);
-    // console.log(computed);
-    // console.log(size);
     let parsedSize = parseInt(size);
-    console.log(parsedSize);
     setTextSize(parsedSize);
   };
 
   const getColourInfoHandler = (e) => {
     let textResult = e.target.dataset.text;
     let colourResult = e.target.dataset.colour;
-    console.log(`The scroll is ${textResult}. The colour is: ${colourResult}`);
     if (textResult === "background") {
       setBgSampleColour(colourResult);
     } else if (textResult === "text") {
@@ -57,7 +52,6 @@ const Main = (props) => {
 
   const changeFontSizeHandler = (e) => {
     let change = e.target.dataset.change;
-    console.log(change);
     if (change === "decrease") {
       setTextSize(textSize - 1);
     } else if (change === "increase") {
@@ -68,9 +62,7 @@ const Main = (props) => {
   const sampleTextUpdateHandler = (e) => {
     let fontType = e.target.dataset.font;
     let fontSampleText = e.target.dataset.sampletext;
-    console.log(fontType);
     setFontFamily(fontType);
-    console.log(fontSampleText);
     setSampleText(fontSampleText);
   };
 
