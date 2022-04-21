@@ -7,11 +7,13 @@ import FontSelcCont from "./FontSelcCont";
 const Main = (props) => {
   const [sampleText, setSampleText] = useState("Font Group: Font Family");
   const [textSize, setTextSize] = useState("36");
+  const [fontFam, setFontFamily] = useState("");
   const [bgSampleColour, setBgSampleColour] = useState("white");
   const [textSampleColour, setTextSampleColour] = useState("black");
   const [elementDisplayed, setElementDisplayed] = useState("h1");
   const bgScrollDiv = useRef();
   const textScrollDiv = useRef();
+  const fontsScrollDiv = useRef();
 
   const elementUsed = useRef();
   useEffect(() => getElement(), [elementDisplayed]);
@@ -63,16 +65,27 @@ const Main = (props) => {
     }
   };
 
-  const reset = () => {
-      setSampleText("Font Group: Font Family");
-      setTextSize("36");
-      setBgSampleColour("white");
-      setTextSampleColour("black");
-      setElementDisplayed("h1");
+  const sampleTextUpdateHandler = (e) => {
+    let fontType = e.target.dataset.font;
+    let fontSampleText = e.target.dataset.sampletext;
+    console.log(fontType);
+    setFontFamily(fontType);
+    console.log(fontSampleText);
+    setSampleText(fontSampleText);
+  };
 
-      bgScrollDiv.current.scrollLeft = 0;
-      textScrollDiv.current.scrollLeft = 0;
-  }
+  const reset = () => {
+    setSampleText("Font Group: Font Family");
+    setTextSize("36");
+    setFontFamily("helvetica");
+    setBgSampleColour("white");
+    setTextSampleColour("black");
+    setElementDisplayed("h1");
+
+    bgScrollDiv.current.scrollLeft = 0;
+    textScrollDiv.current.scrollLeft = 0;
+    fontsScrollDiv.current.scrollTop = 0;
+  };
 
   return (
     <main className="main">
@@ -97,6 +110,7 @@ const Main = (props) => {
         elementDisplayed={elementDisplayed}
         elementUsed={elementUsed}
         fontSize={textSize}
+        fontFam={fontFam}
       />
       <ButtonsCont
         clickedButton={elementDisplayed}
@@ -105,7 +119,11 @@ const Main = (props) => {
         changeFontSize={changeFontSizeHandler}
         reset={reset}
       />
-      <FontSelcCont />
+      <FontSelcCont
+        fonts={props.fonts}
+        updateFont={sampleTextUpdateHandler}
+        fontsScroll={fontsScrollDiv}
+      />
     </main>
   );
 };
